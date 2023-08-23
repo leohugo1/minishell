@@ -232,8 +232,8 @@ void Mkdir(char *caminho)
   }
   free(caminhoclone);
 }
-int CopararArquivos(const void* a,const void* b) {
-    return strcmp(*(const char**)a, *(const char**)b);
+int CopararArquivos( void* a,  void* b) {
+    return strcmp(*( char**)a, *( char**)b);
 }
 
 void ordenarArquivos(char* path_pasta) {
@@ -311,7 +311,7 @@ void CP(char* source_path,char* destination_path){
             sprintf(source_file_path, "%s/%s", source_path, dir_entry->d_name);
             sprintf(destination_file_path, "%s/%s", destination_path, dir_entry->d_name);
 
-            CP(source_file_path, destination_file_path);
+            copy_file(source_file_path, destination_file_path);
         }
     }
 
